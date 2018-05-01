@@ -18,3 +18,13 @@
     tags: base-config
   - name: app-tier
     tags: [apps, tomcat]
+
+- name: Setup Postgres SQL
+  hosts: appdbs
+  gather_facts: false
+  become: true
+  roles:
+  - name: base-config
+    tags: base-config
+  - name: geerlingguy.postgresql
+    tags: [db, postgres]
