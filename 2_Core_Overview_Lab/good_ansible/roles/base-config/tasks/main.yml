@@ -1,0 +1,12 @@
+# - name: enable sudo for the ansible commands without requiring tty
+#   replace:
+#     path: /etc/sudoers
+#     regexp: '^Defaults\s*requiretty'
+#     replace: 'Defaults  !requiretty'
+#     backup: yes
+
+- name: enable the repos
+  template:
+    src: repos.j2
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: 0644

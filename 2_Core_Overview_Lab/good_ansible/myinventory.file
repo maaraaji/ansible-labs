@@ -15,6 +15,10 @@ appdbs
 support
 
 
+##[jumpbox]
+## This is the jumpbox
+## bastion.927a.example.opentlc.com ansible_ssh_host=bastion.927a.example.opentlc.com ansible_ssh_private_key_file="~/.ssh/gkmrotlc" ansible_ssh_user=gowthamkumar.mr-cognizant.com
+
 [frontends]
 ## These are the frontends
 frontend1.927a.internal ansible_ssh_host=frontend1.927a.example.opentlc.com
