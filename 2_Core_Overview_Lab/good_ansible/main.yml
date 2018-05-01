@@ -8,3 +8,13 @@
     tags: base-config
   - name: lb-tier
     tags: [lbs, haproxy]
+
+- name: Setup Tomcat
+  hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+  - name: base-config
+    tags: base-config
+  - name: app-tier
+    tags: [apps, tomcat]

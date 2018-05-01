@@ -1,0 +1,25 @@
+- name: install {{ app }}
+  yum:
+    name: "{{ app }}"
+    state: latest
+
+- name: enable {{ app }}
+  service: 
+    name: "{{ app }}"
+    enabled: yes
+
+- name: create ansible tomcat directory
+  file:
+    path: "{{ webroot }}"
+    state: directory
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: "{{ webroot }}/index.html"
+    mode: 0644
+
+- name: start {{ app }}
+  service:
+    name: "{{ app }}"
+    state: started

@@ -16,3 +16,8 @@
     dest: /etc/haproxy/haproxy.cfg
     mode: 644
   notify: restart_{{ app }}
+
+- name: restart_{{ app }}
+  service:
+    name: "{{ app }}"
+    state: restarted
