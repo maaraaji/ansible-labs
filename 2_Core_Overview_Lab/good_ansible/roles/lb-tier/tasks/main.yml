@@ -1,0 +1,23 @@
+---
+
+- name: install {{ app }}
+  yum:
+    name: "{{ app }}"
+    state: latest
+
+- name: enable {{ app }}
+  service: 
+    name: "{{ app }}"
+    enabled: yes
+
+- name: make {{ app }} configuration for load balancing
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    mode: 644
+  notify: restart_{{ app }}
+
+- name: restart_{{ app }}
+  service:
+    name: "{{ app }}"
+    state: restarted
